@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  git_actions:
+    build: .
+    container_name: gitRunner
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/code
+      - ../.:/repo
+    # ports:
+    #   - "8080:8080"
+    networks:
+      - ansible_my_bridge_network
+
+
+networks:
+  ansible_my_bridge_network:
+    external: true
